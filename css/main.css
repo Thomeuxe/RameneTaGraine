@@ -1,4 +1,46 @@
 body{
     margin: 0;
     padding: 0;
+
+    background: #99ffff;
 }
+
+/***************
+*
+* GRID
+*
+***************/
+
+.container{
+    width: 1280px;
+    margin: 0 auto;
+}
+
+/****************
+*
+* Styling
+*
+****************/
+
+.header{
+    position: relative;
+    height: 80vh;
+    padding: 50px 0;
+}
+
+    .header__socials{
+        float: right;
+        background: url(../img/social-background.png) no-repeat;
+        background-position: center;
+        -webkit-background-size: contain;
+        background-size: contain;
+    }
+
+    .header__logo{
+        position: absolute;
+        height: 250px;
+        width: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
