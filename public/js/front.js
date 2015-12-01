@@ -2,7 +2,11 @@
  * Helpers
  ******************/
 
-    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+    window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+
+var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
 
@@ -86,8 +90,6 @@ function distMetric(x,y,x2,y2) {
 
 var headerGraines = document.querySelectorAll('.header__graine');
 
-console.log(headerGraines);
-
 for(var i = headerGraines.length - 1; i >= 0; i--){
     headerGraines[i].addEventListener('mouseenter', hoverNav);
     headerGraines[i].hover = false;
@@ -95,7 +97,6 @@ for(var i = headerGraines.length - 1; i >= 0; i--){
 }
 
 function mouseOut(){
-    console.log(this);
     this.hover = false;
 }
 
@@ -134,3 +135,135 @@ function hoverNav(e) {
         tl.add(TweenMax.to($(this)[0], 0.40, {rotation: 0, ease: Sine.easeInOut}), 1.4);
     }
 }
+
+/******************
+ *
+ * Et si l'écologie
+ *
+ *****************/
+
+var texts = $('#text-swap').attr('data-text');
+var textsArray = texts.split(";");
+
+var currentText = 0;
+$('#text-swap')[currentText].innerHTML = textsArray[currentText];
+
+var prev = Date.now();
+var now;
+var interval = 2000;
+
+function renderTextSwap(){
+    now = Date.now();
+
+    if(now - prev >= interval){
+        prev = Date.now();
+
+        $('#text-swap').addClass('hidden');
+
+        window.setTimeout(function() {
+            if(currentText >= textsArray.length -1){
+                currentText = 0;
+            }else{
+                currentText ++;
+            }
+
+            $('#text-swap')[0].innerHTML = textsArray[currentText];
+            $('#text-swap').removeClass('hidden');
+        }, 400);
+    }
+
+    requestAnimationFrame(renderTextSwap);
+}
+
+requestAnimationFrame(renderTextSwap);
+
+// Devices sliders
+
+var tween = TweenMax.to('#imac-image', 50, {y: "-1762px", ease: Sine.easeInOut, yoyo: true, repeat: -1});
+
+var scene = new ScrollMagic.Scene({
+    triggerElement: "#introduction"
+})
+    .setTween(tween) // trigger a TweenMax.to tween
+    .addTo(controller);
+
+var timeline = new TimelineMax();
+timeline.add([
+    TweenMax.from('#introduction-iphone', 10, {y: 300, opacity: 0, ease: Sine.easeOut}),
+    TweenMax.from('#introduction-imac', 10, {y: 700, opacity: 0, ease: Sine.easeOut})
+]);
+
+
+// build scene
+var scene = new ScrollMagic.Scene({triggerElement: "#introduction", duration: '50%', triggerHook: 0.5})
+// animate color and top border in relation to scroll position
+    .setTween(timeline) // the tween durtion can be omitted and defaults to 1
+    .addTo(controller);
+
+var IphoneSlider = function(){
+    this.el = '#iphone-slider';
+    this.$el = $(this.el);
+
+    this.slides = [];
+
+    this.speed = 4000;
+    this.now = Date.now();
+    this.prevNow = Date.now();
+
+    $.each($('#iphone-slider > *'), function(i, val) {
+        this.slides.push($(val));
+    }.bind(this));
+
+    this.slides[0].addClass('active');
+
+    this.next = function() {
+        for(var i = 0; i < this.slides.length; i++){
+            if(this.slides[i].is('.active')){
+                this.slides[i].removeClass('active');
+
+                setTimeout(function() {
+                    if(i < this.slides.length - 1){
+                        this.slides[i+1].addClass('active');
+                    }else{
+                        this.slides[0].addClass('active');
+                    }
+                }.bind(this), 250);
+
+                return;
+            }
+        }
+    };
+
+    this.prev = function() {
+        for(var i = 0; i < this.slides.length; i++){
+            if(this.slides[i].is('.active')){
+                this.slides[i].removeClass('active');
+
+                setTimeout(function() {
+                    if (i > 0) {
+                        this.slides[i - 1].addClass('active');
+                    } else {
+                        this.slides[this.slides.length - 1].addClass('active');
+                    }
+                }.bind(this), 250);
+
+                return;
+            }
+        }
+    };
+
+    this.render = function() {
+        this.now = Date.now();
+
+        if(this.now - this.prevNow >= this.speed){
+            this.prevNow = Date.now();
+            this.next();
+        }
+
+        requestAnimationFrame(this.render);
+    }.bind(this);
+
+    requestAnimationFrame(this.render);
+};
+
+var iphoneSlider = new IphoneSlider();

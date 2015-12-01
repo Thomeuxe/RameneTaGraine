@@ -5,6 +5,10 @@ body{
     background: url(../img/background.svg) no-repeat;
     background-size: cover;
     background-position: top center;
+
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    color: #444;
 }
 
 /***************
@@ -15,12 +19,38 @@ body{
 
 *, *:before, *:after{
     box-sizing: border-box;
+    transform-origin: 50% 50%;
+    outline: none;
 }
 
 h1, h2, h3, h4, h5, h6{
     font-weight: normal;
     margin: 0;
     padding: 0;
+}
+
+p{
+    line-height: 1.6em;
+}
+
+/***************
+*
+* HELPERS
+*
+***************/
+
+.relative{
+    position: relative;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.valign--flex{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
 }
 
 /***************
@@ -43,22 +73,6 @@ h1, h2, h3, h4, h5, h6{
 
 /***************
 *
-* GENERAL
-*
-***************/
-
-.heading{
-    font-family: 'hobgoblin';
-    font-size: 40px;
-}
-
-    .heading--big{
-        font-size: 60px;
-        text-align: center;
-    }
-
-/***************
-*
 * GRID
 *
 ***************/
@@ -68,15 +82,24 @@ h1, h2, h3, h4, h5, h6{
     margin: 0 auto;
 }
 
+    .container:after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .container--large{
+        width: 1600px;
+        margin: 0 auto;
+    }
+
     .container--relative{
         position: relative;
     }
 
-/****************
-*
-* Styling
-*
-****************/
+    .container--mb{
+        margin-bottom: 150px;
+    }
 
 /*
 Section
@@ -91,7 +114,39 @@ Section
     }
 
     .section--padding{
-        padding: 50px 0;
+        padding: 150px 0;
+    }
+
+    .section--flex{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+
+    .section--relative{
+        position: relative;
+    }
+
+/****************
+*
+* Styling
+*
+****************/
+
+/*
+General
+*/
+
+.heading{
+    font-family: 'hobgoblin';
+    font-size: 40px;
+    color: #153e5b;
+    line-height: 1.6em;
+}
+
+    .heading--big{
+        font-size: 60px;
+        margin-bottom: 150px;
     }
 
 /*
@@ -100,12 +155,12 @@ Header
 
 .header{
     position: relative;
-    height: 90vh;
-    margin-bottom: 10vh;
+    height: 95vh;
 }
 
     .header__socials{
         position: relative;
+        z-index: 10;
         float: right;
         background: url(../img/social-background.png) no-repeat;
         background-position: center;
@@ -211,6 +266,8 @@ Header
 
         .header__nav a{
             display: block;
+            min-width: 180px;
+            text-align: center;
             text-decoration: none;
             color: #153e5b;
             text-transform: uppercase;
@@ -250,3 +307,165 @@ Header
             z-index: -1;
             transform: translate3d(70vw, 40px, 0);
         }
+        
+/*
+Le client
+*/
+
+.client{
+    background: rgba(255,255,255,0.8);
+    background-size: cover;
+}
+
+    .client:before{
+        content: '';
+        position: absolute;
+        background-image: url(../img/osons-icon.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #fff;
+        background-size: 80%;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .client:after{
+        content: "";
+        position: absolute;
+        transform: translate(50%, 0);
+        left: 0;
+        top: 0;
+        display: block;
+        width: 100vw;
+        height: 90vh;
+        background-image: url(../img/osons-icon.svg);
+        background-position: center top -50vh;
+        background-repeat: no-repeat;
+        background-size: contain;
+        opacity: 0.1;
+    }
+        
+        
+/*
+Le concept
+*/
+
+.introduction{
+
+}
+
+    .text-swap{
+        opacity: 1;
+        transform: translate3d(0,0,0);
+        transition: 0.2s ease-in-out;
+        display: inline-block;
+        width: 600px;
+        text-align: left;
+    }
+
+    .text-swap.hidden{
+        opacity: 0;
+        transform: translate3d(0,-30px,0);
+    }
+
+    .introduction__device-wrapper{
+        float: right;
+        margin-right: 100px;
+        margin-left: 100px;
+        position: relative;
+    }
+
+    .introduction__iphone{
+        width: 200px;
+        height: 405px;
+        background: url(../img/iphone.svg) no-repeat;
+        background-size: contain;
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        bottom: 0;
+        transform: translate(100px, 0);
+    }
+
+        .iphone__slider{
+            background: url(../img/game/mobile-background.png);
+            -webkit-background-size:cover;
+            background-size:cover;
+            width: 161px;
+            height: 300px;
+            position: relative;
+            transform: translate(21px, 50px);
+            overflow: hidden;
+        }
+
+            .iphone__slider > *{
+                width: 100%;
+                height: auto;
+                opacity: 0;
+                position: absolute;
+                transform: translate3d(0, 100%, 0);
+                transition: all 0.5s ease-in-out;
+            }
+
+                .iphone__slider > .active{
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                }
+
+            .iphone__slider:before, .imac__slider:before{
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 20;
+                pointer-events: none;
+                box-shadow: inset 0 0 3px rgba(0,0,0,0.5);
+            }
+
+    .introduction__imac{
+        position: relative;
+        width: 874px;
+        height: 700px;
+        background: url(../img/imac.svg) no-repeat;
+        background-size: contain;
+        margin-left: auto;
+    }
+
+        .imac__slider{
+            background: #fff;
+            width: 798px;
+            height: 450px;
+            position: relative;
+            overflow: hidden;
+            transform: translate(34px, 33px);
+        }
+
+            .imac__slider:after{
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 798px;
+                height: 88px;
+                background: url(../img/game/desktop-menu.png);
+                background-position: center;
+                background-size: contain;
+            }
+
+            .imac__slider img{
+                width: 100%;
+                height: auto;
+            }
+
+    /* Slick */
+
+    .slick-arrow{
+        position: absolute;
+    }

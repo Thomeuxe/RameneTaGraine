@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -28,19 +30,70 @@
 
         <nav class="header__nav">
             <ul>
-                <li id="header-graine-1"><a href="#"><div class="header__graine"></div>Menu</a></li>
-                <li id="header-graine-2"><a href="#"><div class="header__graine"></div>Menu</a></li>
-                <li id="header-graine-3"><a href="#"><div class="header__graine"></div>Menu</a></li>
+                <li id="header-graine-1"><a href="#"><div class="header__graine"></div>Le client</a></li>
+                <li id="header-graine-2"><a href="#"><div class="header__graine"></div>Notre<br>proposition</a></li>
+                <li id="header-graine-3"><a href="#"><div class="header__graine"></div>La<br>communication</a></li>
             </ul>
         </nav>
     </header>
 </div>
 
-<section class="section section--full section--padding">
-    <h1 class="heading heading--big">Et si l'écologie était <span>un cul</span> ?</h1>
+<section id="client" class="section section--full section--padding section--relative client">
+    <div class="container">
+        <h1 class="heading heading--big">Et si l'écologie était</h1>
+    </div>
 </section>
 
-<script src="js/lib/zepto.min.js"></script>
+<section id="introduction" class="section section--full section--padding section--flex introduction">
+    <div class="container">
+        <h1 class="heading heading--big">Et si l'écologie c'était <span class="text-swap" id="text-swap" data-text="ludique...;du pastis...;un nain...;un club sandwich..."></span></h1>
+    </div>
+
+    <div class="container container--large container--relative container--mb">
+        <div class="introduction__device-wrapper">
+            <div id="introduction-iphone" class="introduction__iphone">
+                <div id="iphone-slider" class="iphone__slider">
+                    <img src="img/game/mobile-souffle.png" alt="Souffle !">
+                    <img src="img/game/mobile-ecarte.png" alt="Ecarte !">
+                    <img src="img/game/mobile-bouge.png" alt="Bouge !">
+                </div>
+            </div>
+
+            <div id="introduction-imac" class="introduction__imac">
+                <div class="imac__slider">
+                    <img id="imac-image" src="img/game/desktop.png" alt="Ramène ta graine">
+                </div>
+            </div>
+        </div>
+
+        <h2>Hello</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium adipisci assumenda atque autem ea exercitationem fugit iste laborum magni pariatur provident quia, ratione sint voluptatem? Non officia praesentium saepe.</p>
+    </div>
+
+    <div class="container container--large container--relative">
+        <div class="introduction__device-wrapper">
+            <div id="introduction-iphone" class="introduction__iphone">
+                <div id="iphone-slider" class="iphone__slider">
+                    <img src="img/game/mobile-souffle.png" alt="Souffle !">
+                    <img src="img/game/mobile-ecarte.png" alt="Ecarte !">
+                    <img src="img/game/mobile-bouge.png" alt="Bouge !">
+                </div>
+            </div>
+
+            <div id="introduction-imac" class="introduction__imac">
+                <div class="imac__slider">
+                    <img id="imac-image" src="img/game/desktop.png" alt="Ramène ta graine">
+                </div>
+            </div>
+        </div>
+
+        <h2>Hello</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium adipisci assumenda atque autem ea exercitationem fugit iste laborum magni pariatur provident quia, ratione sint voluptatem? Non officia praesentium saepe.</p>
+    </div>
+</section>
+
+<script src="//code.jquery.com/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>

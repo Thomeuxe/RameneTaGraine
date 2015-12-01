@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="541.5" height="438" viewBox="0 0 541.5 438">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e8ebf0;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #474e5d;
+      }
+
+      .cls-2, .cls-4 {
+        opacity: 0.1;
+      }
+
+      .cls-3 {
+        fill: #1b1c1e;
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-1);
+      }
+    </style>
+
+    <linearGradient id="linear-gradient-1" gradientUnits="userSpaceOnUse" x1="369.75" y1="21" x2="369.75" y2="322.5">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="foot">
+      <path d="M181.500,434.141 L181.500,429.021 L201.015,426.447 L217.008,371.000 L269.960,371.000 L271.500,371.000 L324.452,371.000 L340.444,426.447 L359.960,429.021 L359.960,434.141 L181.500,434.141 Z" class="cls-1"/>
+    </clipPath>
+  </defs>
+  <g>
+    <path d="M181.500,434.141 L181.500,429.021 L201.015,426.447 L217.008,371.000 L269.960,371.000 L271.500,371.000 L324.452,371.000 L340.444,426.447 L359.960,429.021 L359.960,434.141 L181.500,434.141 Z" class="cls-1"/>
+    <path d="M173.547,438.000 L177.008,426.000 L364.452,426.000 L367.913,438.000 L173.547,438.000 Z" class="cls-2" clip-path="url(#foot)"/>
+    <path d="M213.547,378.000 L217.008,366.000 L324.452,366.000 L327.913,378.000 L213.547,378.000 Z" class="cls-2" clip-path="url(#foot)"/>
+    <path d="M0.000,322.500 L0.000,12.000 C0.000,5.373 5.373,0.000 12.000,0.000 L529.500,0.000 C536.127,0.000 541.500,5.373 541.500,12.000 L541.500,322.500 L0.000,322.500 Z" class="cls-3"/>
+    <path d="M530.250,371.500 L12.250,371.500 C5.623,371.500 0.000,366.627 0.000,360.000 L0.000,322.500 L541.500,322.500 L541.500,360.000 C541.500,366.627 536.877,371.500 530.250,371.500 Z" class="cls-1"/>
+    <path d="M520.500,322.500 L219.000,322.500 L520.500,21.000 L520.500,322.500 Z" class="cls-4"/>
+  </g>
+</svg>
