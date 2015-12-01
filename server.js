@@ -2,6 +2,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 var express = require('express');
 var io = require('socket.io').listen(http);
+var _ = require('lodash');
 
 // Set static files
 app.use(express.static(__dirname + '/public'));
@@ -33,7 +34,7 @@ io.on('connection', function(socket){
 
 
 
-    socket.on('pinch', function(data){
+    socket.on('pinch', _.throttle(function(data){
 
         if(data.direction != pinchVars.lastDirection){
             pinchVars.directionValue = 0;
@@ -42,10 +43,10 @@ io.on('connection', function(socket){
         }
         pinchVars.lastDirection = data.direction;
         socket.to(connections['Screen'].socketId).emit('pinch', pinchVars.directionValue);
-    });
+    }, 50));
 
     socket.on('voice', function(level){
-       socket.to(connections['Screen'].socketId).emit('voice', level.replace('%', ''));
+       socket.to(connections['Screen'].socketId).emit('voice', level);
     });
 
 

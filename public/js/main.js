@@ -15,17 +15,19 @@ UserInteraction.prototype.initEvents = function(){
         this.detectPinch();
         this.detectAudio();
     }else{
+        this.detectAudio();
         this.socket.on('pinch', this.getPinch.bind(this));
-        this.socket.on('voice', this.getVoice.bind(this));
+        this.socket.on('voice', function(ev){console.log('test')});
+        // this.getVoice.bind(this)
     }
 };
 
 UserInteraction.prototype.getElements = function(){
   this.els = {
       nuage1: document.getElementById('test1'),
-      nuage2: document.getElementById('test2')
-  }
-    console.log(this.els);
+      nuage2: document.getElementById('test2'),
+      eolienne: document.getElementById('eolienne')
+  };
 };
 
 UserInteraction.prototype.detectAudio = function(){
@@ -56,8 +58,9 @@ UserInteraction.prototype.detectAudio = function(){
             }
 
             var average = values / length,
-                level = Math.round(average) + '%';
-            _self.socket.emit('voice', level);
+                level = Math.round(average);
+            _self.getVoice(level);
+            //_self.socket.emit('voice', level);
         }
     }, function(){alert('pas de media')});
 };
@@ -81,15 +84,14 @@ UserInteraction.prototype.detectPinch = function(){
 
 UserInteraction.prototype.getPinch = function(direction){
     // direction = 1(zoom) or -1(dezoom)
-    console.log(this.els.nuage1.offsetLeft);
-    TweenMax.to(this.els.nuage1, 0.5, {left: this.els.nuage1.offsetLeft + (direction/2)});
-    TweenMax.to(this.els.nuage2, 0.5, {left: this.els.nuage2.offsetLeft - (direction/2)});
-    //document.getElementsByClassName('header__logo')[0].style.transform = "translate(" + (50+PinchNumber/2) + "%, -50%)";
+    TweenMax.to(this.els.nuage1, 0.5, {x: "+=" + direction/2});
+    TweenMax.to(this.els.nuage2, 0.5, {x: "-=" + direction/2});
 };
 
-
 UserInteraction.prototype.getVoice = function(level){
-    document.getElementsByClassName('header__nuage--1')[0].style.transform = "translate3d(50vw, " + level*10 + "px, 0)";
+    if(level > 50){
+        TweenMax.to(this.els.eolienne, 0.3, {rotation : "+=" + level /2});
+    }
 };
 
 

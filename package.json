@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Thomeuxe/RameneTaGraine#readme",
   "dependencies": {
     "express": "^4.13.3",
+    "lodash": "^3.10.1",
     "socket.io": "^1.3.7"
   }
 }
