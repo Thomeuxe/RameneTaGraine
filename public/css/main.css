@@ -9,6 +9,22 @@ body{
 
 /***************
 *
+* NORMALIZE
+*
+***************/
+
+*, *:before, *:after{
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+/***************
+*
 * FONTS
 *
 ***************/
@@ -27,6 +43,22 @@ body{
 
 /***************
 *
+* GENERAL
+*
+***************/
+
+.heading{
+    font-family: 'hobgoblin';
+    font-size: 40px;
+}
+
+    .heading--big{
+        font-size: 60px;
+        text-align: center;
+    }
+
+/***************
+*
 * GRID
 *
 ***************/
@@ -36,6 +68,10 @@ body{
     margin: 0 auto;
 }
 
+    .container--relative{
+        position: relative;
+    }
+
 /****************
 *
 * Styling
@@ -43,13 +79,29 @@ body{
 ****************/
 
 /*
+Section
+*/
+
+.section{
+
+}
+
+    .section--full{
+        min-height: 100vh;
+    }
+
+    .section--padding{
+        padding: 50px 0;
+    }
+
+/*
 Header
 */
 
 .header{
     position: relative;
-    height: 80vh;
-    padding: 50px 0;
+    height: 90vh;
+    margin-bottom: 10vh;
 }
 
     .header__socials{
@@ -77,6 +129,7 @@ Header
 
     .header__logo{
         position: absolute;
+        z-index: 1;
         height: 250px;
         width: auto;
         top: 50%;
@@ -86,20 +139,62 @@ Header
 
     .header__nav{
         font-family: "hobgoblin";
+        position: absolute;
+        width: 100%;
+        top: 0;
+        bottom: 10vh;
     }
 
         .header__nav ul{
+            position: absolute;
+            margin: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
             list-style: none;
             display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
         }
 
         .header__nav li{
             font-size: 40px;
             line-height: 47px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
+            .header__nav li:before{
+                content: "";
+                background: url("../img/rope.svg") repeat-y;
+                flex-basis: 100vw;
+                z-index: -1;
+                top: 0;
+                bottom: 50px;
+                width: 3px;
+                order: -2;
+            }
+
+            .header__graine{
+                display: block;
+                background: url("../img/graine.png") no-repeat;
+                background-size: contain;
+                flex-basis: 80px;
+                flex-shrink: 0;
+                flex-grow: 0;
+                top: 0;
+                height: 80px;
+                width: 80px;
+                order: -1;
+                margin: 0 auto;
+                margin-bottom: 40px;
+                transform-origin: 50% 0;
+                transform: translate3d(0, -15px, 0);
+            }
 
             .header__nav li:first-child{
-
+                transform: translate3d(0, -60px, 0);
             }
 
             .header__nav li:nth-child(2){
@@ -110,9 +205,15 @@ Header
 
             }
 
+            .header__nav li:last-child{
+                transform: translate3d(0, -40px, 0);
+            }
+
         .header__nav a{
+            display: block;
             text-decoration: none;
             color: #153e5b;
+            text-transform: uppercase;
         }
 
     .header__nuage{
