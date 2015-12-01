@@ -11,29 +11,37 @@ app.get('/', function(req, res){
     res.sendFile('index.html');
 });
 
-
+var pinchValue = 0;
 var connections = {
     Screen : {},
     Mobile : {}
 };
 
-var pinchEvents = 0;
-
-
 io.on('connection', function(socket){
-    pinchEvents = 0;
 
     // get Socket id
     var socketId = socket.id;
+    var pinchVars = {
+        directionValue : 0,
+        lastDirection : 0
+    };
 
     socket.on('auth', function(data){
         // Fill screen or mobile property with socket id
         connections[data].socketId = socketId;
     });
 
-    socket.on('pinch', function(){
-        pinchEvents ++;
-        socket.to(connections['Screen'].socketId).emit('pinch', pinchEvents);
+
+
+    socket.on('pinch', function(data){
+
+        if(data.direction != pinchVars.lastDirection){
+            pinchVars.directionValue = 0;
+        }else{
+            pinchVars.directionValue += data.direction;
+        }
+        pinchVars.lastDirection = data.direction;
+        socket.to(connections['Screen'].socketId).emit('pinch', pinchVars.directionValue);
     });
 
     socket.on('voice', function(level){

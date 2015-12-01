@@ -2,6 +2,7 @@ var UserInteraction = function(){
     this.socket = io();
     this.deviceType = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) ? 'Mobile' : 'Screen';
     this.authenticate();
+    this.getElements();
     this.initEvents();
 };
 
@@ -14,9 +15,17 @@ UserInteraction.prototype.initEvents = function(){
         this.detectPinch();
         this.detectAudio();
     }else{
-        this.socket.on('pinch', this.getPinch);
-        this.socket.on('voice', this.getVoice);
+        this.socket.on('pinch', this.getPinch.bind(this));
+        this.socket.on('voice', this.getVoice.bind(this));
     }
+};
+
+UserInteraction.prototype.getElements = function(){
+  this.els = {
+      nuage1: document.getElementById('test1'),
+      nuage2: document.getElementById('test2')
+  }
+    console.log(this.els);
 };
 
 UserInteraction.prototype.detectAudio = function(){
@@ -58,13 +67,24 @@ UserInteraction.prototype.detectPinch = function(){
     var hammertime = new Hammer(document.getElementsByTagName('body')[0]);
     hammertime.get('pinch').set({ enable: true });
 
-    hammertime.on('pinch', function() {
-        _self.socket.emit('pinch');
+    hammertime.on('pinchin', function() {
+        _self.socket.emit('pinch', {
+            direction : 1
+        });
+    });
+    hammertime.on('pinchout', function() {
+        _self.socket.emit('pinch', {
+            direction : -1
+        });
     });
 };
 
-UserInteraction.prototype.getPinch = function(PinchNumber){
-    document.getElementsByClassName('header__logo')[0].style.transform = "translate(" + (50+PinchNumber/2) + "%, -50%)";
+UserInteraction.prototype.getPinch = function(direction){
+    // direction = 1(zoom) or -1(dezoom)
+    console.log(this.els.nuage1.offsetLeft);
+    TweenMax.to(this.els.nuage1, 0.5, {left: this.els.nuage1.offsetLeft + (direction/2)});
+    TweenMax.to(this.els.nuage2, 0.5, {left: this.els.nuage2.offsetLeft - (direction/2)});
+    //document.getElementsByClassName('header__logo')[0].style.transform = "translate(" + (50+PinchNumber/2) + "%, -50%)";
 };
 
 
