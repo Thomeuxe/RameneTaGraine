@@ -20,9 +20,9 @@
     <header class="header" id="header">
         <aside class="header__socials">
             <div class="socials__inner">
-                <a href="#"><img src="img/facebook.svg" alt="Facebook"></a>
-                <a href="#"><img src="img/twitter.svg" alt="Twitter"></a>
-                <a href="#"><img src="img/google-plus.svg" alt="Google Plus"></a>
+                <a target="_blank" href="http://www.facebook.com/sharer.php"><img src="img/facebook.svg" alt="Facebook"></a>
+                <a target="_blank" href="https://twitter.com/share?text=Ramène ta Graine&hashtags=COP21"><img src="img/twitter.svg" alt="Twitter"></a>
+                <a target="_blank" href="https://plus.google.com/share"><img src="img/google-plus.svg" alt="Google Plus"></a>
             </div>
         </aside>
 
@@ -39,14 +39,113 @@
 </div>
 
 <section id="client" class="section section--full section--padding section--relative client">
-    <div class="container">
-        <h1 class="heading heading--big">Et si l'écologie était</h1>
+    <div class="container container--flex">
+        <div class="client__introduction col-1-3">
+            <h2 class="heading heading--sub">Le client</h2>
+            <h1 class="heading heading--big">La Fondation<br>Nicolas Hulot</h1>
+
+            <p>La Fondation Nicolas Hulot souhaite accélérer les changements de comportements et ce par le soutient
+                d’initiatives environnementales.</p>
+
+            <p>La campagne OSONS lancée le 7 octobre impliquent au-delà des politiques de la COP21, les jeunes à
+                travers 10 engagements individuels.</p>
+        </div>
+        <div class="client__logo col--grow">
+            <img src="img/logo-fondation.svg" alt="Osons">
+        </div>
+    </div>
+    <div class="mt valeurs">
+        <div class="container container--flex">
+            <div class="col--grow"></div>
+            <div class="col-1-4 align-right">
+                <h2 class="heading heading--sub">Sa mission</h2>
+
+                <h1 class="heading heading--medium">Ses valeurs</h1>
+
+                <p>Outre ses revendications, la Fondation Nicolas Hulot porte des valeurs fortes.</p>
+            </div>
+        </div>
+        <div class="valeurs__slider">
+            <div id="valeurs-inner"><span class="valeurs__mot">Créativité et innovation</span><span class="valeurs__mot">Dialogue et collaboration</span><span class="valeurs__mot">Sobriété</span><span class="valeurs__mot">Solidarité et interdépendance</span><span class="valeurs__mot">Transparence et accessibilité</span><span class="valeurs__mot">Accessibilité</span></div>
+        </div>
+    </div>
+    <div class="mt--big timeline-wrapper">
+        <div class="container container--flex">
+            <div class="col-1-4">
+                <h2 class="heading heading--sub">Son parcours</h2>
+
+                <h1 class="heading heading--medium">Les temps forts de la campagne</h1>
+            </div>
+            <div class="col--grow"></div>
+        </div>
+
+        <div class="container">
+            <div class="timeline">
+                <div class="timeline__point">
+                    <header>
+                        <span class="timeline__date">7 Octobre</span>
+
+                        <h3 class="timeline__heading">
+                            Début de la campagne
+                        </h3>
+                    </header>
+                    <ul>
+                        <li>
+                            <h4 class="timeline__list__heading">Vidéo</h4>
+                            <p>Golden moustache</p>
+                        </li>
+                        <li>
+                            <h4 class="timeline__list__heading">Livre</h4>
+                            <p>"Osons, plaidoyer d'un homme libre"</p>
+                        </li>
+                        <li>
+                            <h4 class="timeline__list__heading">Conférence à Paris</h4>
+                            <p>Présentation des 10 engagements individuels</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="timeline__point">
+                    <header>
+                        <span class="timeline__date timeline__date">Du 30 Novembre au 11 Décembre</span>
+
+                        <h3 class="timeline__heading">
+                            COP21
+                        </h3>
+                    </header>
+                    <ul>
+                        <li>
+                            <h4 class="timeline__list__heading">Conférence climat</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </li>
+                        <li>
+                            <h4 class="timeline__list__heading">Livre</h4>
+                            <p>"Osons, plaidoyer d'un homme libre"</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="timeline__point">
+                    <header>
+                        <span class="timeline__date">2ème trimestre 2016</span>
+
+                        <h3 class="timeline__heading">
+                            Dispositif interactif
+                        </h3>
+                    </header>
+                    <ul>
+                        <li>
+                            <h4 class="timeline__list__heading">Mise en place du dispositif</h4>
+                            <p>Sensibilisation des 15-30 ans aux engagements individuels</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
 <section id="introduction" class="section section--full section--padding section--flex introduction">
     <div class="container">
-        <h1 class="heading heading--big">Et si l'écologie c'était <span class="text-swap" id="text-swap" data-text="ludique...;du pastis...;un nain...;un club sandwich..."></span></h1>
+        <h1 class="heading heading--big introduction__heading" id="introduction-heading"><span class="text-swap-static" id="text-swap-static">Et si l'écologie c'était </span> <span class="text-swap" id="text-swap" data-text="ludique...;du pastis...;un nain...;un club sandwich..." data-final="vous !"></span></h1>
     </div>
 
     <div class="container container--large container--relative container--mb">
@@ -66,30 +165,22 @@
             </div>
         </div>
 
-        <h2>Hello</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium adipisci assumenda atque autem ea exercitationem fugit iste laborum magni pariatur provident quia, ratione sint voluptatem? Non officia praesentium saepe.</p>
+        <h2>Notre proposition</h2>
+        <p>« Ramène ta Graine » propose une expérience digitale ludique par le jeu.
+            En lien avec les engagements de la Fondation,  différentes mini-actions simples à réaliser investissent la cible à son échelle. L’objectif du jeu consiste à manipuler l’environnement d’un parcours afin de faire progresser une graine.
+            Au cours de chaque niveau, on retrouvera une question décalée sur l’implication écologique du joueur par rapport à l’engagement. Un feedback collectif est ensuite présenté au joueur : statistique et jardin collectif où les graines sont plantées au fur et à mesure des niveaux.
+            Il s’agit d’une première prise de conscience qui indique qu’un engagement individuel simple peut avoir un impact important sur l’écologie.
+            Afin de finaliser l’idée du cumul d’actions individuelles pouvant avoir des impacts importants, plusieurs projets de la plateforme de financement participatif Kickstarter sont proposés à l’utilisateur selon l’engagement du niveau sélectionné.</p>
     </div>
 
     <div class="container container--large container--relative">
-        <div class="introduction__device-wrapper">
-            <div id="introduction-iphone" class="introduction__iphone">
-                <div id="iphone-slider" class="iphone__slider">
-                    <img src="img/game/mobile-souffle.png" alt="Souffle !">
-                    <img src="img/game/mobile-ecarte.png" alt="Ecarte !">
-                    <img src="img/game/mobile-bouge.png" alt="Bouge !">
-                </div>
-            </div>
-
-            <div id="introduction-imac" class="introduction__imac">
-                <div class="imac__slider">
-                    <img id="imac-image" src="img/game/desktop.png" alt="Ramène ta graine">
-                </div>
-            </div>
-        </div>
-
-        <h2>Hello</h2>
+        <h2>Essayer le concept</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium adipisci assumenda atque autem ea exercitationem fugit iste laborum magni pariatur provident quia, ratione sint voluptatem? Non officia praesentium saepe.</p>
     </div>
+</section>
+
+<section id="communication" class="section section--full section--padding section--flex communication">
+
 </section>
 
 <script src="//code.jquery.com/jquery-1.11.3.js"></script>
