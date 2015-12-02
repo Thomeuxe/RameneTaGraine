@@ -70,22 +70,15 @@ UserInteraction.prototype.detectPinch = function(){
     var hammertime = new Hammer(document.getElementsByTagName('body')[0]);
     hammertime.get('pinch').set({ enable: true });
 
-    hammertime.on('pinchin', function() {
-        _self.socket.emit('pinch', {
-            direction : 1
-        });
-    });
     hammertime.on('pinchout', function() {
-        _self.socket.emit('pinch', {
-            direction : -1
-        });
+        _self.socket.emit('pinch');
     });
 };
 
 UserInteraction.prototype.getPinch = function(direction){
     // direction = 1(zoom) or -1(dezoom)
-    TweenMax.to(this.els.nuage1, 0.5, {x: "+=" + direction/2});
-    TweenMax.to(this.els.nuage2, 0.5, {x: "-=" + direction/2});
+    TweenMax.to(this.els.nuage1, 0.5, {x: "-=" + 20});
+    TweenMax.to(this.els.nuage2, 0.5, {x: "+=" + 20});
 };
 
 UserInteraction.prototype.getVoice = function(level){

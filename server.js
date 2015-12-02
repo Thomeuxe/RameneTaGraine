@@ -34,15 +34,8 @@ io.on('connection', function(socket){
 
 
 
-    socket.on('pinch', _.throttle(function(data){
-
-        if(data.direction != pinchVars.lastDirection){
-            pinchVars.directionValue = 0;
-        }else{
-            pinchVars.directionValue += data.direction;
-        }
-        pinchVars.lastDirection = data.direction;
-        socket.to(connections['Screen'].socketId).emit('pinch', pinchVars.directionValue);
+    socket.on('pinch', _.throttle(function(){
+        socket.to(connections['Screen'].socketId).emit('pinch');
     }, 50));
 
     socket.on('voice', function(level){
