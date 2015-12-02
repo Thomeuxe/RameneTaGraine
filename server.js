@@ -12,7 +12,6 @@ app.get('/', function(req, res){
     res.sendFile('index.html');
 });
 
-var pinchValue = 0;
 var connections = {
     Screen : {},
     Mobile : {}
@@ -22,10 +21,6 @@ io.on('connection', function(socket){
 
     // get Socket id
     var socketId = socket.id;
-    var pinchVars = {
-        directionValue : 0,
-        lastDirection : 0
-    };
 
     socket.on('auth', function(data){
         // Fill screen or mobile property with socket id
@@ -35,15 +30,21 @@ io.on('connection', function(socket){
 
 
     socket.on('pinch', _.throttle(function(){
-        socket.to(connections['Screen'].socketId).emit('pinch');
+        socket.to(getSocketId('Screen')).emit('pinch');
     }, 50));
 
     socket.on('voice', function(level){
-       socket.to(connections['Screen'].socketId).emit('voice', level);
+       socket.to(getSocketId('Screen')).emit('voice', level);
     });
 
-
+    socket.on('position', function(element){
+        socket.to(getSocketId('Mobile')).emit('position', element);
+    });
 });
+
+function getSocketId(device){
+    return connections[device].socketId;
+}
 
 
 http.listen(3000, function(){
