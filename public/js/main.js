@@ -31,8 +31,12 @@ UserInteraction.prototype.getElements = function(){
       nuage1: document.getElementById('nuage1'),
       nuage2: document.getElementById('nuage2'),
       sectionNuage: document.getElementById('section-nuage').offsetTop,
-      eolienne: document.getElementById('eolienne')
+      eolienne: document.getElementById('eolienne'),
+      alert: document.getElementById('alert')
   };
+    this.config = {
+        counter: 0
+    }
 };
 
 /*
@@ -70,7 +74,6 @@ UserInteraction.prototype.detectAudio = function(){
             }
 
             var level = Math.round(values / length);
-            console.log(level);
             _self.socket.emit('voice', level);
         }
     }, function(){alert('pas de media')});
@@ -116,9 +119,17 @@ UserInteraction.prototype.getPinch = function(){
 
 // Rotate wind turbine on blow event
 UserInteraction.prototype.getVoice = function(level){
-    if(level > 10){
-        TweenMax.to(this.els.eolienne, 0.5, {rotation : "+=" + level});
-        TweenMax.to(this.els.eolienne, 3, {rotation : "+=" + level/2, ease: Expo.easeOut});
+    if(level > 20){
+        this.config.counter = 0;
+        TweenMax.to(this.els.eolienne, 0.5, {rotation : "+=" + level*2});
+        TweenMax.to(this.els.eolienne, 3, {rotation : "+=" + level, ease: Expo.easeOut});
+    }else{
+        this.config.counter ++;
+        if(this.config.counter == 100){
+            var tl = new TimelineMax();
+            tl.to(this.els.alert, 0.5, {scale: "+=0.5"});
+            tl.to(this.els.alert, 0.5, {scale: "-=0.5"});
+        }
     }
 };
 
