@@ -47,6 +47,10 @@ p{
     text-align: right;
 }
 
+.align-center{
+    text-align: center;
+}
+
 .valign--flex{
     display: flex;
     justify-content: space-around;
@@ -442,6 +446,38 @@ Le client
             .client__logo img{
                 flex-basis: 40%;
             }
+            
+    .blocOsonsEngagements{
+        height: 150px;
+        display: flex;
+        justify-content: center;
+    }
+
+        .ensembleBlocsPartage{
+            background: #f00;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 10px;
+            padding: 0 30px;
+        }
+        
+            .blocPartageConteneur{
+                background-clip: padding-box;
+                flex-basis: 100%;
+                padding: 30px 20px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                border-radius: 3px;
+                font-size: 36px;
+                font-family: 'hobgoblin', sans-serif;
+            }
+
+                .blocPartage{
+
+                }
 
     .valeurs{
         position: relative;
@@ -450,11 +486,12 @@ Le client
 
     .valeurs__slider{
         width: 100vw;
-        z-index: -1;
+        position: relative;
+        z-index: 1;
         left: 0;
         right: 0;
         font-family: "hobgoblin", sans-serif;
-        font-size: 130px;
+        font-size: 70px;
         white-space: nowrap;
         opacity: 0.6;
         color: #153e5b;
@@ -464,12 +501,16 @@ Le client
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-        transform: translate3d(30vw, 0, 0);
         cursor: -moz-grab; cursor: -webkit-grab; cursor: grab;
     }
 
         .valeurs__slider:active{
             cursor: -moz-grabbing; cursor: -webkit-grabbing; cursor: grabbing;
+        }
+
+        .valeurs-inner{
+            position: relative;
+            z-index: 10;
         }
 
         .valeurs__mot{
@@ -480,14 +521,14 @@ Le client
             .valeurs__mot:after{
                 content: "";
                 position: absolute;
-                width: 24px;
-                height: 24px;
+                width: 12px;
+                height: 12px;
                 border-radius: 50%;
                 background: #000e2b;
                 top: 50%;
                 right: 0;
                 opacity: 1;
-                transform: translate(50%, -50%);
+                transform: translate(50%, 0);
             }
 
     .timeline{
@@ -566,8 +607,32 @@ Le concept
 */
 
 .introduction{
-
+    position: relative;
 }
+
+    .introduction:before{
+        content: '';
+        position: absolute;
+        background-image: url(../img/osons-icon.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #fff;
+        background-size: 80%;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .introduction__introduction .heading--big{
+        margin-bottom: 50px;
+    }
+
+    p{
+        font-size: 24px;
+    }
 
     .introduction__heading{
         line-height: 40px;
@@ -682,8 +747,43 @@ Le concept
                 height: auto;
             }
 
+    .container--kickstarter{
+        display: flex;
+        justify-content: center;
+    }
+        .container--kickstarter img{
+            width: 50%;
+            height: auto;
+        }
+
     /* Slick */
 
     .slick-arrow{
         position: absolute;
+    }
+
+/*
+* La communication
+*/
+
+.communication{
+    background: rgba(255,255,255,1);
+    background-size: cover;
+    position: relative;
+}
+
+    .communication:before{
+        content: '';
+        position: absolute;
+        background-image: url(../img/osons-icon.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #fff;
+        background-size: 80%;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }

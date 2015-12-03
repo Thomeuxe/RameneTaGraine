@@ -164,7 +164,7 @@ function moveValeurs(e) {
 
 function dragValeurs(e) {
     console.log(e.pageX - e.data.x);
-    TweenMax.set('#valeurs-inner', {x: (e.data.startX + (e.pageX - e.data.x)), onComplete: function(){console.log(this)}});
+    TweenMax.set('#valeurs-inner', {x: (e.data.startX + (e.pageX - e.data.x))});
 }
 
 function restartValeurs(e) {
@@ -174,6 +174,16 @@ function restartValeurs(e) {
     valeursTween = TweenMax.to('#valeurs-inner', 120, {x: -valeursWidth, ease: Linear.easeNone, yoyo: true, repeat: -1});
 }
 
+
+///////////// Les engagements /////////////
+
+var engagementsTl = new TimelineMax({repeat: -1});
+
+$.each($('.ensembleBlocsPartage'), function(i, item) {
+    TweenMax.set(item, {opacity: 0, display: "none"});
+    engagementsTl.add(TweenMax.to(item, 0.3, {opacity: 1, display: "flex", yoyo: true, repeat: 1, repeatDelay: 1}));
+    engagementsTl.add(TweenMax.to(item, 0, {display: "none"}));
+});
 
 /******************
  *
@@ -197,7 +207,7 @@ var tl = new TimelineMax({repeat: -1, repeatDelay: 1});
 
 function setText() {
     if(tl.repeatDelay() > 0){
-        tl.timeScale(tl.timeScale() * 1.2);
+        //tl.timeScale(tl.timeScale() * 1.2);
     }
 
     if(currentText >= textsArray.length -1){
