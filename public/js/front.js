@@ -150,7 +150,7 @@ $.each($('.valeurs__mot'), function(index, item){
 
 console.log(valeursWidth);
 
-//var valeursTween = TweenMax.to('#valeurs-inner', 120, {x: -valeursWidth, ease: Linear.easeNone, yoyo: true, repeat: -1});
+var valeursTween = TweenMax.to('#valeurs-inner', 70, {x: -valeursWidth, ease: Linear.easeNone, yoyo: true, repeat: -1});
 
 $('#valeurs-inner').on('mousedown', moveValeurs);
 $('#valeurs-inner').on('mouseup', restartValeurs);
@@ -163,15 +163,17 @@ function moveValeurs(e) {
 }
 
 function dragValeurs(e) {
-    console.log(e.pageX - e.data.x);
-    TweenMax.set('#valeurs-inner', {x: (e.data.startX + (e.pageX - e.data.x))});
+    var newX = e.data.startX + (e.pageX - e.data.x);
+    if(newX < 0 && newX > -($('#valeurs-inner').outerWidth(true)) + $('#valeurs-slider').outerWidth()){
+        TweenMax.set('#valeurs-inner', {x: newX});
+    }
 }
 
 function restartValeurs(e) {
     e.preventDefault();
     $('body').off('mousemove', dragValeurs);
     $('body').off('mouseup', restartValeurs);
-    valeursTween = TweenMax.to('#valeurs-inner', 120, {x: -valeursWidth, ease: Linear.easeNone, yoyo: true, repeat: -1});
+    valeursTween = TweenMax.to('#valeurs-inner', 70, {x: -valeursWidth, ease: Linear.easeNone, yoyo: true, repeat: -1});
 }
 
 
@@ -242,8 +244,8 @@ var scene = new ScrollMagic.Scene({
 
 var timeline = new TimelineMax();
 timeline.add([
-    TweenMax.from('#introduction-iphone', 10, {y: 300, opacity: 0, ease: Sine.easeOut}),
-    TweenMax.from('#introduction-imac', 10, {y: 700, opacity: 0, ease: Sine.easeOut})
+    TweenMax.from('#introduction-iphone', 15, {y: 300, opacity: 0, ease: Sine.easeOut}),
+    TweenMax.from('#introduction-imac', 15, {y: 700, opacity: 0, ease: Sine.easeOut})
 ]);
 
 
@@ -320,3 +322,25 @@ var IphoneSlider = function(){
 };
 
 var iphoneSlider = new IphoneSlider();
+
+/*****************
+ * Communication
+ */
+
+var storyboardTween = TweenMax.from('#storyboard', 1, {y: 200, opacity: 0, ease: Sine.easeOut});
+
+new ScrollMagic.Scene({triggerElement: "#communication", duration: '50%', triggerHook: 0.3})
+// animate color and top border in relation to scroll position
+    .setTween(storyboardTween) // the tween durtion can be omitted and defaults to 1
+    .addTo(controller);
+
+/*****************
+ * Footer
+ */
+
+var footerTween = TweenMax.from('#footer-branch', 2, {y: 100});
+
+new ScrollMagic.Scene({triggerElement: "#footer", duration: 200, triggerHook: 0.9})
+// animate color and top border in relation to scroll position
+    .setTween(footerTween) // the tween durtion can be omitted and defaults to 1
+    .addTo(controller);

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
@@ -9,11 +10,12 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-
-<div id="nuage-wrapper">
-    <div class="header__nuage header__nuage--1" id="nuage-1"></div>
-    <div class="header__nuage header__nuage--2" id="nuage-2"></div>
-    <div class="header__nuage header__nuage--3" id="nuage-3"></div>
+<div class="nuage-wrapper">
+    <div id="nuage-wrapper">
+        <div class="header__nuage header__nuage--1" id="nuage-1"></div>
+        <div class="header__nuage header__nuage--2" id="nuage-2"></div>
+        <div class="header__nuage header__nuage--3" id="nuage-3"></div>
+    </div>
 </div>
 
 <div id="header-wrapper" class="container container--relative">
@@ -30,9 +32,9 @@
 
         <nav class="header__nav">
             <ul>
-                <li id="header-graine-1"><a href="#"><div class="header__graine"></div>Le client</a></li>
-                <li id="header-graine-2"><a href="#"><div class="header__graine"></div>Notre<br>proposition</a></li>
-                <li id="header-graine-3"><a href="#"><div class="header__graine"></div>La<br>communication</a></li>
+                <li id="header-graine-1"><a href="#client"><div class="header__graine"></div>Le client</a></li>
+                <li id="header-graine-2"><a href="#introduction"><div class="header__graine"></div>Notre<br>proposition</a></li>
+                <li id="header-graine-3"><a href="#communication"><div class="header__graine"></div>La<br>communication</a></li>
             </ul>
         </nav>
     </header>
@@ -54,122 +56,124 @@
             <img src="img/logo-fondation.svg" alt="Osons">
         </div>
     </header>
-    <div class="mt engagements">
-        <div class="container">
-            <header class="container container--flex">
-                <div class="col--grow"></div>
-                <div class="col-1-2 align-right">
-                    <h2 class="heading heading--sub">Sa mission</h2>
+    <div class="engagements mt">
+        <div class="container container--flex">
+            <div class="col-1-2">
+                <div class="valeurs">
+                            <h2 class="heading heading--sub">Sa mission</h2>
 
-                    <h1 class="heading heading--medium">Ses engagements</h1>
+                            <h1 class="heading heading--medium">Ses valeurs</h1>
 
-                    <p>Outre ses revendications, la Fondation Nicolas Hulot porte des valeurs fortes.</p>
-                </div>
-            </header>
-
-            <div class="blocOsonsEngagements">
-
-                <div class="ensembleBlocsPartage">
-                    <div class="blocPartageConteneur">
-                        <div class="blocPartage blocPartageSelect" id="blocPartage01">
-                            <span class="txtInfo" data-index="1">Je me déplace à plusieurs ou sans moteur</span>
-                        </div>
+                            <p>Outre ses revendications, la Fondation Nicolas Hulot porte des valeurs fortes.</p>
+                    <div id="valeurs-slider" class="valeurs__slider">
+                        <div class="valeurs-inner" id="valeurs-inner"><span class="valeurs__mot">Créativité et innovation</span><span class="valeurs__mot">Dialogue et collaboration</span><span class="valeurs__mot">Sobriété</span><span class="valeurs__mot">Solidarité et interdépendance</span><span class="valeurs__mot">Transparence et accessibilité</span><span class="valeurs__mot">Accessibilité</span></div>
                     </div>
                 </div>
+            </div>
 
-                <div class="ensembleBlocsPartage">
-                    <div class="blocPartageConteneur">
-                        <div class="blocPartage blocPartageSelect" id="blocPartage02">
-                            <span class="txtInfo" data-index="2">Je réfléchis à deux fois avant de prendre l'avion</span>
+            <div class="col-1-2">
+                <header class="container--flex">
+                    <div class="col--grow"></div>
+                    <div class="col-1-2 align-right">
+                        <h2 class="heading heading--sub">Sa mission</h2>
+
+                        <h1 class="heading heading--medium">10 engagements</h1>
+
+                        <p>Outre ses revendications, la Fondation Nicolas Hulot porte des valeurs fortes.</p>
+                    </div>
+                </header>
+
+                <div class="blocOsonsEngagements">
+
+                    <div class="ensembleBlocsPartage">
+                        <div class="blocPartageConteneur">
+                            <div class="blocPartage blocPartageSelect" id="blocPartage01">
+                                <span class="txtInfo" data-index="1">Je me déplace à plusieurs ou sans moteur</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="ensembleBlocsPartage">
-                    <div class="blocPartageConteneur">
-                        <div class="blocPartage blocPartageSelect" id="blocPartage03">
-                            <span class="txtInfo" data-index="3">Je mange moins de viande... <br> mais de meilleure qualité</span>
+                    <div class="ensembleBlocsPartage">
+                        <div class="blocPartageConteneur">
+                            <div class="blocPartage blocPartageSelect" id="blocPartage02">
+                                <span class="txtInfo"
+                                      data-index="2">Je réfléchis à deux fois avant de prendre l'avion</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="ensembleBlocsPartage">
-                    <div class="blocPartageConteneur">
-                        <div class="blocPartage blocPartageSelect" id="blocPartage04">
-                            <span class="txtInfo" data-index="4">Je mets fin au gaspillage alimentaire</span>
+                    <div class="ensembleBlocsPartage">
+                        <div class="blocPartageConteneur">
+                            <div class="blocPartage blocPartageSelect" id="blocPartage03">
+                                <span class="txtInfo" data-index="3">Je mange moins de viande... <br> mais de meilleure qualité</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="ensembleBlocsPartage">
-                    <div class="blocPartageConteneur">
-                        <div class="blocPartage blocPartageSelect" id="blocPartage05">
-                            <span class="txtInfo" data-index="5">Je mets mon argent au vert</span>
+                    <div class="ensembleBlocsPartage">
+                        <div class="blocPartageConteneur">
+                            <div class="blocPartage blocPartageSelect" id="blocPartage04">
+                                <span class="txtInfo" data-index="4">Je mets fin au gaspillage alimentaire</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="ensembleBlocsPartage">
-                    <div class="blocPartageConteneur">
-                        <div class="blocPartage blocPartageSelect" id="blocPartage06">
-                            <span class="txtInfo" data-index="6">Je choisis  une électricité 100% renouvelable</span>
+                    <div class="ensembleBlocsPartage">
+                        <div class="blocPartageConteneur">
+                            <div class="blocPartage blocPartageSelect" id="blocPartage05">
+                                <span class="txtInfo" data-index="5">Je mets mon argent au vert</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="ensembleBlocsPartage">
-                    <div class="blocPartageConteneur">
-                        <div class="blocPartage blocPartageSelect" id="blocPartage07">
-                            <span class="txtInfo" data-index="7">J’agis contre le gaspillage énergétique</span>
+                    <div class="ensembleBlocsPartage">
+                        <div class="blocPartageConteneur">
+                            <div class="blocPartage blocPartageSelect" id="blocPartage06">
+                                <span class="txtInfo"
+                                      data-index="6">Je choisis  une électricité 100% renouvelable</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="ensembleBlocsPartage">
-                    <div class="blocPartageConteneur">
-                        <div class="blocPartage blocPartageSelect" id="blocPartage08">
-                            <span class="txtInfo" data-index="8">J’agis pour la nature</span>
+                    <div class="ensembleBlocsPartage">
+                        <div class="blocPartageConteneur">
+                            <div class="blocPartage blocPartageSelect" id="blocPartage07">
+                                <span class="txtInfo" data-index="7">J’agis contre le gaspillage énergétique</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="ensembleBlocsPartage">
-                    <div class="blocPartageConteneur">
-                        <div class="blocPartage blocPartageSelect" id="blocPartage09">
-                            <span class="txtInfo" data-index="9">Je partage</span>
+                    <div class="ensembleBlocsPartage">
+                        <div class="blocPartageConteneur">
+                            <div class="blocPartage blocPartageSelect" id="blocPartage08">
+                                <span class="txtInfo" data-index="8">J’agis pour la nature</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="ensembleBlocsPartage">
-                    <div class="blocPartageConteneur">
-                        <div class="blocPartage blocPartageSelect" id="blocPartage10">
-                            <span class="txtInfo" data-index="10">Je milite et je m'implique pour le climat</span>
+                    <div class="ensembleBlocsPartage">
+                        <div class="blocPartageConteneur">
+                            <div class="blocPartage blocPartageSelect" id="blocPartage09">
+                                <span class="txtInfo" data-index="9">Je partage</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ensembleBlocsPartage">
+                        <div class="blocPartageConteneur">
+                            <div class="blocPartage blocPartageSelect" id="blocPartage10">
+                                <span class="txtInfo" data-index="10">Je milite et je m'implique pour le climat</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="mt valeurs">
-        <header class="container container--flex">
-            <div class="col-1-4 align-left">
-                <h2 class="heading heading--sub">Sa mission</h2>
 
-                <h1 class="heading heading--medium">Ses valeurs</h1>
-
-                <p>Outre ses revendications, la Fondation Nicolas Hulot porte des valeurs fortes.</p>
-            </div>
-            <div class="col--grow"></div>
-        </header>
-        <div class="valeurs__slider mt">
-            <div id="valeurs-inner"><span class="valeurs__mot">Créativité et innovation</span><span class="valeurs__mot">Dialogue et collaboration</span><span class="valeurs__mot">Sobriété</span><span class="valeurs__mot">Solidarité et interdépendance</span><span class="valeurs__mot">Transparence et accessibilité</span><span class="valeurs__mot">Accessibilité</span></div>
-        </div>
-    </div>
-    <section class="mt--big timeline-wrapper">
+    <section class="mt timeline-wrapper">
         <header class="container container--flex">
-            <div class="col--grow"></div>
-            <div class="col-1-4 align-right">
+            <div class="col-1-4">
                 <h2 class="heading heading--sub">Son parcours</h2>
 
                 <h1 class="heading heading--medium">Les temps forts de la campagne</h1>
@@ -267,15 +271,26 @@
         </div>
     </section>
     <section class="container container--flex mt--big">
-        <div class="col--grow"></div>
-        <div class="col-1-3">
+        <div class="col-2-3 video col--grow">
+            <div class="video-wrapper">
+                <video controls width="80%" src="img/video.mp4">Rémène ta graine</video>
+            </div>
+        </div>
+        <div class="col-1-3 col--no-shrink">
             <p>Au cours de chaque niveau, on retrouvera une question décalée sur l’implication
             écologique du joueur par rapport à l’engagement. Un feedback collectif est ensuite présenté au joueur :
             statistique et jardin collectif où les graines sont plantées au fur et à mesure des niveaux.</p>
 
             <p>Il s’agit d’une première prise de conscience qui indique qu’un engagement individuel simple peut avoir un
                 impact important sur l’écologie.</p>
+            
+            <p>
+                <a target="_blank" class="btn" href="./experiences.html">Découvrir avec mon smartphone</a>
+            </p>
         </div>
+    </section>
+    <section class="container styleguide mt">
+        <img src="img/styleguide.png" alt="Styleguide Ramène ton graine">
     </section>
     <section class="container mt">
         <div class="container container--flex">
@@ -290,11 +305,32 @@
 </section>
 
 <section id="communication" class="section section--full section--padding section--flex communication">
+    <header class="container container--flex">
+        <div class="client__introduction col-1-2 col--no-shrink">
+            <h2 class="heading heading--sub">Notre plan de communication</h2>
+            <h1 class="heading heading--big">L'écologie, c'est <a class="link link--hidden" href="https://youtu.be/kOru9ITtVIg?t=22s" target="_blank">vous.</a></h1>
 
+            <p>Pour rendre accessible l’écologie au quotidien, une représentation du circuit sous forme d’un dispositif murale sera installée dans plusieurs grandes villes de France.</p>
+            <p>Le fil conducteur « virtuel – réel » de notre communication avec les jeunes adultes, est maintenu grâce à l’utilisation du smartphone comme manette de cette maquette.</p>
+            <p>Notre cible échange davantage par les réseaux sociaux majoritairement accessibles notamment via leur téléphone. C’est pourquoi une vidéo buzz est primordiale pour satisfaire la communication du jeu à travers  le dispositif physique.</p>
+            <p>Cette viralisation permet un échange entre les deux dispositifs et poussent les 15-30 ans à poursuivre les mini-actions chez eux.</p>
+        </div>
+        <div class="storyboard" id="storyboard">
+            <img src="img/storyboard.png" alt="Storyboard">
+        </div>
+    </header>
 </section>
 
-<footer>
-
+<footer class="footer" id="footer">
+    <div class="container">
+        <div class="footer__name">
+            Girardin Paulin, Impedovo Jade, Neyraud Quentin, Lecoeur Thomas
+        </div>
+        <div class="footer__copy">
+            Gobelins CRM 2015
+        </div>
+    </div>
+    <div class="footer__branch" id="footer-branch"></div>
 </footer>
 
 <script src="//code.jquery.com/jquery-1.11.3.js"></script>
