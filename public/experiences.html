@@ -7,6 +7,9 @@
 </head>
 
 <style>
+    body{
+        overflow-x: hidden;
+    }
     #eolienne, #tige{
         position:absolute;
         left: 50%;
@@ -38,6 +41,21 @@
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 200;
+        display: none;
+    }
+    header{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    header a{
+        color: #000;
+        text-decoration: none;
+        font-family: "hobgoblin", sans-serif;
+        font-size: 50px;
+        padding: 0 75px;
     }
 
 </style>
@@ -45,9 +63,15 @@
 
 <body>
 
-    <h1 id="alert">Souffle plus fort !</h1>
+    <section class="section section--full">
+        <header>
+            <a href="" id="linkE">L'éolienne</a>
+            <a href="" id="linkN">Les nuages</a>
+        </header>
+    </section>
 
     <section class="section section--full section--relative">
+        <h1 id="alert">Souffle plus fort !</h1>
         <img src="img/tige.png" id="tige" alt="">
         <img src="img/eolienne.png" id="eolienne" alt="">
     </section>
@@ -61,6 +85,7 @@
 
 
     <script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.js"></script>
     <script src="./js/lib/hammer.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
     <script src="./js/main.js"></script>

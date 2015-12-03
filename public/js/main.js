@@ -140,3 +140,17 @@ UserInteraction.prototype.getPosition = function(element){
 
 new UserInteraction();
 
+
+$('#linkE').on('click', function(event){
+    event.preventDefault();
+   $('html, body').animate({
+       scrollTop: $(window).height()
+   },800);
+});
+$('#linkN').on('click', function(event){
+    event.preventDefault();
+    $('html, body').animate({
+        scrollTop: $(window).height()*3
+    },800);
+});
+
