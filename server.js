@@ -34,7 +34,7 @@ io.on('connection', function(socket){
     }, 50));
 
     socket.on('voice', function(level){
-       socket.to(getSocketId('Screen')).emit('voice', level);
+        socket.to(getSocketId('Screen')).emit('voice', level);
     });
 
     socket.on('position', function(element){
