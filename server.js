@@ -48,5 +48,5 @@ function getSocketId(device){
 
 
 http.listen(3005, function(){
-    console.log('listening on *:3000');
+    console.log('listening on *:3005');
 });
