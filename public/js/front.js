@@ -136,9 +136,48 @@ function hoverNav(e) {
     }
 }
 
+/*******************
+ *
+ * Le client
+ *
+ ******************/
+
+var valeursWidth = 0;
+
+$.each($('.valeurs__mot'), function(index, item){
+    valeursWidth += item.offsetWidth;
+});
+
+console.log(valeursWidth);
+
+//var valeursTween = TweenMax.to('#valeurs-inner', 120, {x: -valeursWidth, ease: Linear.easeNone, yoyo: true, repeat: -1});
+
+$('#valeurs-inner').on('mousedown', moveValeurs);
+$('#valeurs-inner').on('mouseup', restartValeurs);
+
+function moveValeurs(e) {
+    e.preventDefault();
+    valeursTween.kill();
+    $('body').on('mousemove', null, {x: e.pageX, startX: $('#valeurs-inner')[0]._gsTransform.x}, dragValeurs);
+    $('body').on('mouseup', restartValeurs);
+}
+
+function dragValeurs(e) {
+    console.log(e.pageX - e.data.x);
+    TweenMax.set('#valeurs-inner', {x: (e.data.startX + (e.pageX - e.data.x)), onComplete: function(){console.log(this)}});
+}
+
+function restartValeurs(e) {
+    e.preventDefault();
+    $('body').off('mousemove', dragValeurs);
+    $('body').off('mouseup', restartValeurs);
+    valeursTween = TweenMax.to('#valeurs-inner', 120, {x: -valeursWidth, ease: Linear.easeNone, yoyo: true, repeat: -1});
+}
+
+
 /******************
  *
- * Et si l'écologie
+ * Notre proposition
  *
  *****************/
 
@@ -148,34 +187,38 @@ var textsArray = texts.split(";");
 var currentText = 0;
 $('#text-swap')[currentText].innerHTML = textsArray[currentText];
 
+var textSwapWidth = $('#text-swap')[0].offsetWidth;
+
 var prev = Date.now();
 var now;
 var interval = 2000;
 
-function renderTextSwap(){
-    now = Date.now();
+var tl = new TimelineMax({repeat: -1, repeatDelay: 1});
 
-    if(now - prev >= interval){
-        prev = Date.now();
-
-        $('#text-swap').addClass('hidden');
-
-        window.setTimeout(function() {
-            if(currentText >= textsArray.length -1){
-                currentText = 0;
-            }else{
-                currentText ++;
-            }
-
-            $('#text-swap')[0].innerHTML = textsArray[currentText];
-            $('#text-swap').removeClass('hidden');
-        }, 400);
+function setText() {
+    if(tl.repeatDelay() > 0){
+        tl.timeScale(tl.timeScale() * 1.2);
     }
 
-    requestAnimationFrame(renderTextSwap);
+    if(currentText >= textsArray.length -1){
+        currentText = 0;
+    }else{
+        currentText ++;
+    }
+
+    if(tl.timeScale() < 12){
+        $('#text-swap')[0].innerHTML = textsArray[currentText];
+    }else{
+        tl.clear();
+        TweenMax.set('#text-swap', {fontSize: 100});
+        TweenMax.fromTo('#text-swap', 2.5, {y: 150, opacity: 0}, {y: -10, opacity: 1, ease: Sine.easeInOut})
+        $('#text-swap')[0].innerHTML = $('#text-swap').attr('data-final');
+    }
 }
 
-requestAnimationFrame(renderTextSwap);
+tl.fromTo('#text-swap', 0.3, {y: 0, opacity: 1}, {y: -50, opacity: 0, ease: Sine.easeIn})
+    .call(setText)
+    .fromTo('#text-swap', 0.3, {y: 50, opacity: 0}, {y: 0, opacity: 1, ease: Sine.easeOut});
 
 // Devices sliders
 
