@@ -21,17 +21,17 @@ UserInteraction.prototype.initEvents = function(){
     }else{
         document.addEventListener('scroll', this.onScroll.bind(this));
         this.socket.on('pinch', this.getPinch.bind(this));
-        this.socket.on('voice', function(ev){console.log('test')});
+        this.socket.on('voice', this.getVoice.bind(this));
     }
 };
 
 // Get elements informations
 UserInteraction.prototype.getElements = function(){
   this.els = {
-      nuage1: document.getElementById('test1'),
-      nuage1Y: document.getElementById('test1').offsetTop,
-      nuage2: document.getElementById('test2'),
-      nuage2Y: document.getElementById('test2').offsetTop,
+      nuage1: document.getElementById('nuage1'),
+      nuage1Y: document.getElementById('nuage1').offsetTop,
+      nuage2: document.getElementById('nuage2'),
+      nuage2Y: document.getElementById('nuage2').offsetTop,
       eolienne: document.getElementById('eolienne')
   };
 };
@@ -70,10 +70,9 @@ UserInteraction.prototype.detectAudio = function(){
                 values += array[i];
             }
 
-            var average = values / length,
-                level = Math.round(average);
-            _self.getVoice(level);
-            //_self.socket.emit('voice', level);
+            var level = Math.round(values / length);
+            console.log(level);
+            _self.socket.emit('voice', level);
         }
     }, function(){alert('pas de media')});
 };
@@ -108,16 +107,19 @@ UserInteraction.prototype.onScroll = function(event){
  */
 
 // Move clouds on pinch event
-UserInteraction.prototype.getPinch = function(direction){
+UserInteraction.prototype.getPinch = function(){
     // direction = 1(zoom) or -1(dezoom)
-    TweenMax.to(this.els.nuage1, 0.5, {x: "-=" + 20});
-    TweenMax.to(this.els.nuage2, 0.5, {x: "+=" + 20});
+    TweenMax.to(this.els.nuage1, 0.5, {x: "-=" + 45});
+    TweenMax.to(this.els.nuage1, 3, {x: "-=" + 45/2, ease: Expo.easeOut});
+    TweenMax.to(this.els.nuage2, 0.5, {x: "+=" + 45});
+    TweenMax.to(this.els.nuage2, 3, {x: "+=" + 45/2, ease: Expo.easeOut});
 };
 
 // Rotate wind turbine on blow event
 UserInteraction.prototype.getVoice = function(level){
-    if(level > 50){
-        TweenMax.to(this.els.eolienne, 0.3, {rotation : "+=" + level /2});
+    if(level > 10){
+        TweenMax.to(this.els.eolienne, 0.5, {rotation : "+=" + level});
+        TweenMax.to(this.els.eolienne, 3, {rotation : "+=" + level/2, ease: Expo.easeOut});
     }
 };
 
@@ -125,7 +127,6 @@ UserInteraction.prototype.getVoice = function(level){
 UserInteraction.prototype.getPosition = function(element){
   alert('Screen a la position de ' + element);
 };
-
 
 new UserInteraction();
 

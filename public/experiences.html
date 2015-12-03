@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expériences</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<style>
+    #eolienne, #tige{
+        position:absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    #eolienne{
+        transform-origin: 462px 465px;
+    }
+    #tige{
+        top: 375px;
+    }
+
+    #nuage1, #nuage2{
+        position: absolute;
+        left: 50%;
+        top: 25%;
+    }
+    #nuage1{
+        transform: translateX(-75%)
+    }
+    #nuage2{
+        transform: translateX(-25%)
+    }
+
+</style>
+
+
+<body>
+
+<section class="section section--full section--relative">
+        <img src="img/tige.png" id="tige" alt="">
+        <img src="img/eolienne.png" id="eolienne" alt="">
+    </section>
+
+    <section class="section section--full"></section>
+
+    <section class="section section--full section--relative" style="overflow-x: hidden;">
+        <img src="img/nuage-1.png" id="nuage1" alt="">
+        <img src="img/nuage-1.png" id="nuage2" alt="">
+    </section>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/lib/hammer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
