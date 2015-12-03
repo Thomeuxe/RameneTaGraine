@@ -29,9 +29,8 @@ UserInteraction.prototype.initEvents = function(){
 UserInteraction.prototype.getElements = function(){
   this.els = {
       nuage1: document.getElementById('nuage1'),
-      nuage1Y: document.getElementById('nuage1').offsetTop,
       nuage2: document.getElementById('nuage2'),
-      nuage2Y: document.getElementById('nuage2').offsetTop,
+      sectionNuage: document.getElementById('section-nuage').offsetTop,
       eolienne: document.getElementById('eolienne')
   };
 };
@@ -90,7 +89,7 @@ UserInteraction.prototype.detectPinch = function(){
 
 // Detect when user reach element & send socket with element name
 UserInteraction.prototype.onScroll = function(event){
-    if(window.pageYOffset + window.innerHeight/2 > this.els.nuage1Y){
+    if(window.pageYOffset + 10 > this.els.sectionNuage){
         if(!this.positionEvents.nuage){
             this.socket.emit('position', 'nuage');
             this.positionEvents.nuage = true;
